@@ -23,6 +23,10 @@
       }
       h1, h2, h3, h4 {
         text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      p {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
       button {
 				padding: 10px;
@@ -44,13 +48,13 @@
     <div>
       <h2>System Information</h2>
       <div style="text-align: center;">
-        <script>
+        <p><script>
       var result = bowser.getParser(window.navigator.userAgent);
         console.log(result);
         document.write("You are using " + result.parsedResult.browser.name +
                        " v" + result.parsedResult.browser.version + 
                        " on " + result.parsedResult.os.name);
-        </script>
+        </script></p>
       </div>
     </div>
     <div>
