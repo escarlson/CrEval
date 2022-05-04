@@ -21,19 +21,40 @@
       .keyboard {
         font-size: 40px;
       }
+      h1, h2, h3, h4 {
+        text-align: center;
+      }
+      button {
+				padding: 10px;
+				margin-top: 10px;
+			}
+      video {
+        width: 50%;
+      }
+			/* body {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+        align-content: center;
+			} */
     </style>
   </head>
   <body>
-    <div style="display:flex; justify-content: center;">
+    <div>
       <h2>Audio Test</h2>
     </div>
-    <div style="display:flex; justify-content: center;">
-      <h2>Microphone Test</h2>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <h2>Camera & Microphone Test</h2>
+      <video controls muted></video>
+		  <canvas id="meter" width="500" height="50" style="z-index: 99999;"></canvas>
+		  <button>Resume/suspend volume meter</button>
+		  <script src="volume-meter.js"></script>
+	  	<script src="main.js"></script> 
     </div>
-    <div style="display:flex; justify-content: center;">
+    <div>
       <h2>Keyboard Test</h2>
     </div>
-    <div style="display: flex; justify-content: center;">
+    <div>
       <h4><a href="https://github.com/Tarocch1/keyboard-tester">Keyboard Tester by Tarocch1</a> released under the MIT License</div></h4>
     </div>
     <div style="display: flex; justify-content: center;">
@@ -191,6 +212,7 @@
       insert: 'num0',
       delete: 'num.',
     };
+    const keyBg = '#227ae5';
     const lrMap = ['l', 'r'];
     window.addEventListener('keydown', onKeyDownHandle);
     window.addEventListener('keyup', onKeyUpHandle);
@@ -201,24 +223,24 @@
       if (['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', '/', '-', 'enter'].indexOf(keyName) !== -1) {
         if (e.location === 3) {
           const key = document.getElementById("num" + keyName);
-          key.style.background = '#ffd666';
+          key.style.background = keyBg;
           return;
         }
       }
       if (['home', 'end', 'pageup', 'pagedown', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'clear', 'insert', 'delete'].indexOf(keyName) !== -1) {
         if (e.location === 3) {
           const key = document.getElementById(numMap[keyName]);
-          key.style.background = '#ffd666';
+          key.style.background = keyBg;
           return;
         }
       }
       if (['shift', 'control', 'alt', 'meta'].indexOf(keyName) !== -1) {
         const key = document.getElementById(lrMap[e.location - 1] + keyName);
-        key.style.background = '#ffd666';
+        key.style.background = keyBg;
         return;
       }
       const key = document.getElementById(keyName);
-      key.style.background = '#ffd666';
+      key.style.background = keyBg;
     }
     function onKeyUpHandle(e) {
       e.preventDefault();
@@ -227,33 +249,33 @@
       if (['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', '/', '-', 'enter'].indexOf(keyName) !== -1) {
         if (e.location === 3) {
           const key = document.getElementById("num" + keyName);
-          key.style.background = 'initial';
+          // key.style.background = 'initial';
           return;
         }
       }
       if (['home', 'end', 'pageup', 'pagedown', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'clear', 'insert', 'delete'].indexOf(keyName) !== -1) {
         if (e.location === 3) {
           const key = document.getElementById(numMap[keyName]);
-          key.style.background = 'initial';
+          // key.style.background = 'initial';
           return;
         }
       }
       if (['shift', 'control', 'alt', 'meta'].indexOf(keyName) !== -1) {
         const key = document.getElementById(lrMap[e.location - 1] + keyName);
-        key.style.background = 'initial';
+        // key.style.background = 'initial';
         return;
       }
       if (keyName === 'printscreen') {
         const key = document.getElementById(keyName);
-        key.style.background = '#ffd666';
+        key.style.background = keyBg;
         const timer = setTimeout(function() {
-          key.style.background = 'initial';
+          // key.style.background = 'initial';
           clearTimeout(timer);
         }, 100);
         return;
       }
       const key = document.getElementById(keyName);
-      key.style.background = 'initial';
+      // key.style.background = 'initial';
     }
     </script>
     
