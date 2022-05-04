@@ -38,8 +38,21 @@
         align-content: center;
 			} */
     </style>
+    <script src="https://unpkg.com/bowser@2.4.0/es5.js"></script>
   </head>
   <body>
+    <div>
+      <h2>System Information</h2>
+      <div style="text-align: center;">
+        <script>
+      var result = bowser.getParser(window.navigator.userAgent);
+        console.log(result);
+        document.write("You are using " + result.parsedResult.browser.name +
+                       " v" + result.parsedResult.browser.version + 
+                       " on " + result.parsedResult.os.name);
+        </script>
+      </div>
+    </div>
     <div>
       <h2>Audio Test</h2>
     </div>
