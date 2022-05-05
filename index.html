@@ -200,7 +200,7 @@
           return;
         }
       }
-      if (['home', 'end', 'pageup', 'pagedown', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'clear', 'insert', 'delete'].indexOf(keyName) !== -1) {
+      if (['BrowserForward', 'home', 'end', 'pageup', 'pagedown', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'clear', 'insert', 'delete'].indexOf(keyName) !== -1) {
         if (e.location === 3) {
           const key = document.getElementById(numMap[keyName]);
           key.style.background = keyBg;
