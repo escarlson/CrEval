@@ -60,21 +60,29 @@
     <div>
       <h2>Speaker Test</h2>
       <script>
-        function playLeftSound(){
-        var sound = new Audio('audio/semantron-left.ogg');
+        function playLeftSound(a){
+        var sound = new Audio(a);
         sound.play();
         }
-        function playRightSound(){
-        var sound = new Audio('audio/semantron-right.ogg');
+        function playRightSound(a){
+        var sound = new Audio(a);
         sound.play();
         }
       </script>
       <div id="sound-buttons" style="display:flex; justify-content: center; column-gap: 16px;">
-        <button id="play-left" onclick="playLeftSound()">
+        <button id="play-left" onclick="playLeftSound('audio/semantron-left.ogg')">
           Left Speaker
         </button>
-        <button id="play-right" onclick="playRightSound()">
+        <button id="play-right" onclick="playRightSound('audio/semantron-right.ogg')">
           Right Speaker
+        </button>
+      </div>
+      <div id="sound-buttons" style="display:flex; justify-content: center; column-gap: 16px;">
+        <button id="play-left" onclick="playLeftSound('audio/ede-left.ogg')">
+          Left Speaker (Ede)
+        </button>
+        <button id="play-right" onclick="playRightSound('audio/ede-right.ogg')">
+          Right Speaker (Ede)
         </button>
       </div>
     </div>
