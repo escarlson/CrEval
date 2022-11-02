@@ -26,6 +26,11 @@
   video {
     width: 50%;
   }
+
+  #battery-status {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
         /* body {
             display: flex;
             flex-direction: column;
