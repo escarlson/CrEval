@@ -203,7 +203,8 @@
       insert: 'num0',
       delete: 'num.',
     };
-    const keyBg = '#227ae5';
+    const keyInstBg = '#ffff00';
+    const keyPressedBg = "#227ae5";
     const lrMap = ['l', 'r'];
     window.addEventListener('keydown', onKeyDownHandle);
     window.addEventListener('keyup', onKeyUpHandle);
@@ -214,24 +215,24 @@
       if (['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', '/', '-', 'enter'].indexOf(keyName) !== -1) {
         if (e.location === 3) {
           const key = document.getElementById("num" + keyName);
-          key.style.background = keyBg;
+          key.style.background = keyInstBg;
           return;
         }
       }
       if (['BrowserForward', 'home', 'end', 'pageup', 'pagedown', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'clear', 'insert', 'delete'].indexOf(keyName) !== -1) {
         if (e.location === 3) {
           const key = document.getElementById(numMap[keyName]);
-          key.style.background = keyBg;
+          key.style.background = keyInstBg;
           return;
         }
       }
       if (['shift', 'control', 'alt', 'meta'].indexOf(keyName) !== -1) {
         const key = document.getElementById(lrMap[e.location - 1] + keyName);
-        key.style.background = keyBg;
+        key.style.background = keyInstBg;
         return;
       }
       const key = document.getElementById(keyName);
-      key.style.background = keyBg;
+      key.style.background = keyInstBg;
     }
     function onKeyUpHandle(e) {
       e.preventDefault();
@@ -240,7 +241,8 @@
       if (['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', '/', '-', 'enter'].indexOf(keyName) !== -1) {
         if (e.location === 3) {
           const key = document.getElementById("num" + keyName);
-          // key.style.background = 'initial';
+          //key.style.background = 'initial';
+          key.style.background = keyPressedBg;
           return;
         }
       }
@@ -248,17 +250,19 @@
         if (e.location === 3) {
           const key = document.getElementById(numMap[keyName]);
           // key.style.background = 'initial';
+          key.style.background = keyPressedBg;
           return;
         }
       }
       if (['shift', 'control', 'alt', 'meta'].indexOf(keyName) !== -1) {
         const key = document.getElementById(lrMap[e.location - 1] + keyName);
         // key.style.background = 'initial';
+        key.style.background = keyPressedBg;
         return;
       }
       if (keyName === 'printscreen') {
         const key = document.getElementById(keyName);
-        key.style.background = keyBg;
+        key.style.background = keyInstBg;
         const timer = setTimeout(function() {
           // key.style.background = 'initial';
           clearTimeout(timer);
@@ -267,6 +271,8 @@
       }
       const key = document.getElementById(keyName);
       // key.style.background = 'initial';
+      key.style.background = keyPressedBg;
+
     }
     </script>
     <div style="text-align: center;">
