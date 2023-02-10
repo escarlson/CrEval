@@ -20,7 +20,7 @@
       var result = bowser.getParser(window.navigator.userAgent);
         console.log(result);
         document.write("You are using " + result.parsedResult.browser.name +
-                       " v" + result.parsedResult.browser.version + 
+                       " v" + result.parsedResult.browser.version.split('.')[0] + 
                        " on " + result.parsedResult.os.name);
         </script></p>
       </div>
