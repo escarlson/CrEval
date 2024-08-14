@@ -81,12 +81,14 @@
             <h2 class="card-header">System Information</h2>
             <div class="card-body">
               <script>
-            var result = bowser.getParser(window.navigator.userAgent);
-              console.log(result);
-              document.write("You are using " + result.parsedResult.browser.name +
-                            " v" + result.parsedResult.browser.version.split('.')[0] + 
-                            " on " + result.parsedResult.os.name);
+                var result = bowser.getParser(window.navigator.userAgent);
+                  console.log(result);
+                  document.write("You are using " + result.parsedResult.browser.name +
+                                " v" + result.parsedResult.browser.version.split('.')[0] + 
+                                " on " + result.parsedResult.os.name);
               </script>
+              <br/>
+              <script>document.write("Screen Size: " + screen.width + " X " + screen.height + " pixels");</script>
             </div>
           </div>
         </div>
