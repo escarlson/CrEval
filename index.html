@@ -99,7 +99,9 @@
               <!-- battery.js writes its output to these divs -->
               <div id="battery-status" style="text-align: center;">
                 <div id="battery-charging-status"></div>
-                <div id="battery-level"></div>
+                <div id="battery-level" class="progress" role="progressbar" aria-label="Battery level" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar" style="width: 0%"></div>
+                </div>
                 <div id="battery-charging-time"></div>
                 <div id="battery-discharging-time"></div>
               </div>

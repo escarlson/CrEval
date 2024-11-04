@@ -22,9 +22,13 @@ if (typeof navigator.getBattery === 'function'){
         updateLevelInfo();
       });
       function updateLevelInfo() {
+        const progressBar = document.querySelector('#battery-level > .progress-bar');
         var battery_level = (`Battery level: ${battery.level * 100}%`);
         console.log(battery_level);
-        document.getElementById("battery-level").innerHTML = battery_level;
+        progressBar.style.width = `${battery.level * 100}%`;
+        progressBar.innerHTML = `${battery.level * 100}%`;
+        battery.charging ? progressBar.classList.add("progress-bar-striped", "progress-bar-animated") : progressBar.classList.remove("progress-bar-striped", "progress-bar-animated");
+        progressBar.parentElement.setAttribute("aria-valuenow", `${battery.level * 100}`);
       }
     
       battery.addEventListener("chargingtimechange", () => {
