@@ -80,15 +80,29 @@
           <div class="card">
             <h2 class="card-header">System Information</h2>
             <div class="card-body">
+              <div id="system-info"></div>
+              <div id="screen-size"></div>
+              <div id="touch-info"></div>
               <script>
+                // Bowser system info
                 var result = bowser.getParser(window.navigator.userAgent);
-                  console.log(result);
-                  document.write("You are using " + result.parsedResult.browser.name +
-                                " v" + result.parsedResult.browser.version.split('.')[0] + 
-                                " on " + result.parsedResult.os.name);
+                document.getElementById("system-info").textContent =
+                  "You are using " + result.parsedResult.browser.name +
+                  " v" + result.parsedResult.browser.version.split('.')[0] +
+                  " on " + result.parsedResult.os.name;
+
+                // Screen size
+                document.getElementById("screen-size").textContent =
+                  "Screen Size: " + screen.width + " X " + screen.height + " pixels";
+
+                // Touch & Input info
+                const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+                const touchPoints = navigator.maxTouchPoints || 0;
+                document.getElementById("touch-info").textContent =
+                  hasTouch
+                    ? `Touch Support: Yes (${touchPoints} touch point${touchPoints === 1 ? '' : 's'})`
+                    : "Touch Support: No";
               </script>
-              <br/>
-              <script>document.write("Screen Size: " + screen.width + " X " + screen.height + " pixels");</script>
             </div>
           </div>
         </div>
