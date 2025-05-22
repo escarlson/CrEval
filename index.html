@@ -83,6 +83,7 @@
               <div id="system-info"></div>
               <div id="screen-size"></div>
               <div id="touch-info"></div>
+              <div id="language-info"></div>
               <script>
                 // Bowser system info
                 var result = bowser.getParser(window.navigator.userAgent);
@@ -102,6 +103,11 @@
                   hasTouch
                     ? `Touch Support: Yes (${touchPoints} touch point${touchPoints === 1 ? '' : 's'})`
                     : "Touch Support: No";
+
+                // Language info
+                const language = navigator.language || navigator.userLanguage;
+                document.getElementById("language-info").textContent =
+                  "Language: " + language;
               </script>
             </div>
           </div>
