@@ -16,6 +16,10 @@ if (typeof navigator.getBattery === 'function'){
         var battery_charging_status = (`Battery charging? ${battery.charging ? "Yes" : "No"}`);
         console.log(battery_charging_status);
         document.getElementById("battery-charging-status").innerHTML = battery_charging_status;
+        battery.charging ? document.getElementById("battery-discharging-time").classList.add("d-none") : document.getElementById("battery-discharging-time").classList.remove("d-none");
+        battery.charging ? document.getElementById("battery-charging-time").classList.remove("d-none") : document.getElementById("battery-charging-time").classList.add("d-none");
+        document.getElementById("battery-level").classList.remove("d-none");
+        updateLevelInfo();
       }
     
       battery.addEventListener("levelchange", () => {
@@ -48,8 +52,12 @@ if (typeof navigator.getBattery === 'function'){
         console.log(battery_discharging_time);
         document.getElementById("battery-discharging-time").innerHTML = battery_discharging_time;
       }
+    }).catch((error) => {
+      console.error("Failed to get battery information:", error);
+      document.getElementById("battery-charging-status").innerHTML = "<p><i>Sorry, unable to retrieve battery information.<br>Perhaps this isn't a Chromebook after all?</i></p>";
     });
   } else{
     console.log("Battery info not supported in this broswer");
-    document.getElementById("battery-discharging-time").innerHTML = "<p><i>Sorry, your browser doesn't support battery information.<br>Perhaps this isn't a Chromebook after all?</i></p>";
+    document.getElementById("battery-charging-status").innerHTML = "<p><i>Sorry, your browser doesn't support battery information.<br>Perhaps this isn't a Chromebook after all?</i></p>";
+    document.getElementById("battery-level").classList.add("d-none");
   }
