@@ -39,7 +39,16 @@ if (typeof navigator.getBattery === 'function'){
         updateChargingInfo();
       });
       function updateChargingInfo() {
-        var battery_charging_time = (`Battery charging time: ${battery.chargingTime} seconds`);
+        let seconds = battery.chargingTime;
+        let h = Math.floor(seconds / 3600);
+        let m = Math.floor((seconds % 3600) / 60);
+        let s = Math.floor(seconds % 60);
+        let battery_charging_time;
+        if (isFinite(seconds) && !Number.isNaN(seconds)) {
+          battery_charging_time = `Battery charging time: ${h}h ${m}m ${s}s`;
+        } else {
+          battery_charging_time = "Battery charging time: Calculating...";
+        }
         console.log(`Battery charging time: ${battery.chargingTime} seconds`);
         document.getElementById("battery-charging-time").innerHTML = battery_charging_time;
       }
@@ -48,8 +57,17 @@ if (typeof navigator.getBattery === 'function'){
         updateDischargingInfo();
       });
       function updateDischargingInfo() {
-        var battery_discharging_time = (`Battery discharging time: ${battery.dischargingTime} seconds`);
-        console.log(battery_discharging_time);
+        let seconds = battery.dischargingTime;
+        let h = Math.floor(seconds / 3600);
+        let m = Math.floor((seconds % 3600) / 60);
+        let s = Math.floor(seconds % 60);
+        let battery_discharging_time;
+        if (isFinite(seconds) && !Number.isNaN(seconds)) {
+          battery_discharging_time = `Battery discharging time: ${h}h ${m}m ${s}s`;
+        } else {
+          battery_discharging_time = "Battery discharging time: Calculating...";
+        }
+        console.log(`Battery discharging time: ${battery.dischargingTime} seconds`);
         document.getElementById("battery-discharging-time").innerHTML = battery_discharging_time;
       }
     }).catch((error) => {
