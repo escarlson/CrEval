@@ -82,17 +82,18 @@
             <div class="card-body">
               <div id="system-info"></div>
               <div id="screen-size"></div>
+              <div id="device-serial"></div>
               <div id="touch-info"></div>
               <div id="language-info"></div>
               <script>
-                // Bowser system info
+                // Browser system info
                 var result = bowser.getParser(window.navigator.userAgent);
                 document.getElementById("system-info").textContent =
                   "You are using " + result.parsedResult.browser.name +
                   " v" + result.parsedResult.browser.version.split('.')[0] +
                   " on " + result.parsedResult.os.name;
 
-                // Screen size
+                  // Screen size
                 document.getElementById("screen-size").textContent =
                   "Screen Size: " + screen.width + " X " + screen.height + " pixels";
 
