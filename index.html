@@ -200,8 +200,10 @@
                       document.getElementById('webcam').outerHTML = '<div class="alert alert-danger">Unable to access webcam: ' + err.message + '</div>';
                     });
                 </script>
-                <div style="height: 30px; margin-bottom: 10px;">
-                  <div id="volume-bar" style="height: 100%; width: 0; background: #4caf50;"></div>
+                <div class="d-flex justify-content-center">
+                  <div class="border border-2 border-dark-subtle mb-3" style="width: 300px; height: 30px;">
+                    <div id="volume-bar" class="bg-success" style="height: 100%; width: 0;"></div>
+                  </div>
                 </div>
                 <script src="volume-meter.js"></script>
               </div>
