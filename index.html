@@ -182,11 +182,28 @@
             <div class="card">
               <h2 class="card-header">Camera & Microphone Test</h2>
               <div class="card-body text-center">
-                <video controls muted></video>
-                <canvas id="meter" width="500" height="50" style="z-index: 99999;"></canvas>
-                <button type="button" class="btn btn-primary">Resume/suspend volume meter</button>
+                <video id="webcam" controls autoplay playsinline style="width: 100%; max-width: 400px;" muted></video>
+                <script>
+                  // Request webcam access and display in the video element
+                  navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+                    .then(function(stream) {
+                      const video = document.getElementById('webcam');
+                      if ("srcObject" in video) {
+                        video.srcObject = stream;
+                      } else {
+                        // Older browsers
+                        video.src = window.URL.createObjectURL(stream);
+                      }
+                      video.play();
+                    })
+                    .catch(function(err) {
+                      document.getElementById('webcam').outerHTML = '<div class="alert alert-danger">Unable to access webcam: ' + err.message + '</div>';
+                    });
+                </script>
+                <div style="height: 30px; margin-bottom: 10px;">
+                  <div id="volume-bar" style="height: 100%; width: 0; background: #4caf50;"></div>
+                </div>
                 <script src="volume-meter.js"></script>
-                <script src="main.js"></script> 
               </div>
             </div>
           </div>
@@ -199,20 +216,20 @@
             <div style="display: flex;">
               <div class="key" style="width: 1em; height: 1em;" id="escape"><span>Esc</span></div>
               <div style="width: 1em; height: 1em; margin: 5px;"></div>
-              <div class="key" style="width: 1em; height: 1em;" id="f1"><span>F1</span></div>
-              <div class="key" style="width: 1em; height: 1em;" id="f2"><span>F2</span></div>
-              <div class="key" style="width: 1em; height: 1em;" id="f3"><span>F3</span></div>
-              <div class="key" style="width: 1em; height: 1em;" id="f4"><span>F4</span></div>
+              <div class="key disabled-key" style="width: 1em; height: 1em;" id="f1"><span>F1</span></div>
+              <div class="key disabled-key" style="width: 1em; height: 1em;" id="f2"><span>F2</span></div>
+              <div class="key disabled-key" style="width: 1em; height: 1em;" id="f3"><span>F3</span></div>
+              <div class="key disabled-key" style="width: 1em; height: 1em;" id="f4"><span>F4</span></div>
               <div style="width: .5em; height: 1em; margin: 2.5px;"></div>
-              <div class="key" style="width: 1em; height: 1em;" id="f5"><span>F5</span></div>
-              <div class="key" style="width: 1em; height: 1em;" id="f6"><span>F6</span></div>
-              <div class="key" style="width: 1em; height: 1em;" id="f7"><span>F7</span></div>
-              <div class="key" style="width: 1em; height: 1em;" id="f8"><span>F8</span></div>
+              <div class="key disabled-key" style="width: 1em; height: 1em;" id="f5"><span>F5</span></div>
+              <div class="key disabled-key" style="width: 1em; height: 1em;" id="f6"><span>F6</span></div>
+              <div class="key disabled-key" style="width: 1em; height: 1em;" id="f7"><span>F7</span></div>
+              <div class="key disabled-key" style="width: 1em; height: 1em;" id="f8"><span>F8</span></div>
               <div style="width: .5em; height: 1em; margin: 2.5px;"></div>
-              <div class="key" style="width: 1em; height: 1em;" id="f9"><span>F9</span></div>
-              <div class="key" style="width: 1em; height: 1em;" id="f10"><span>F10</span></div>
-              <div class="key" style="width: 1em; height: 1em;" id="f11"><span>F11</span></div>
-              <div class="key" style="width: 1em; height: 1em;" id="f12"><span>F12</span></div>
+              <div class="key disabled-key" style="width: 1em; height: 1em;" id="f9"><span>F9</span></div>
+              <div class="key disabled-key" style="width: 1em; height: 1em;" id="f10"><span>F10</span></div>
+              <div class="key disabled-key" style="width: 1em; height: 1em;" id="f11"><span>F11</span></div>
+              <div class="key disabled-key" style="width: 1em; height: 1em;" id="f12"><span>F12</span></div>
             </div>
             <div style="width: 1em; height: .2em; margin: 5px;"></div>
             <div style="display: flex;">
@@ -298,7 +315,6 @@
       <div class="card mt-3">
         <h2 class="card-header">Attribution</h2>
         <div class="card-body text-center">
-          <p>Camera & Microphone Test based on <a href="https://github.com/escarlson/VideoStreamVolumeMeterSample">VideoStreamVolumeMeterSample</a> by Steven Carlson, itself based on <a href="https://github.com/SergeyZaligin/VideoStreamVolumeMeterSample">a work</a> by Sergey Zaligin</a></p>
           <p>Keyboard Test based on <a href="https://github.com/Tarocch1/keyboard-tester">Keyboard Tester by Tarocch1</a> released under the MIT License</p>
           <p>Favicon by <a href="https://commons.wikimedia.org/wiki/File:Electron_shell_024_Chromium_-_no_label.svg">Pumbaa (original work by Greg Robson)</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/uk/deed.en">CC BY-SA 2.0 UK</a>, via Wikimedia Commons</p>
           <p>Mallet sound copyright 2013, Canonical Ltd. CC-BY-SA-3.0</p>
